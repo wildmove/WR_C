@@ -46,7 +46,14 @@ namespace UCP_IBD_1
         
         static void Main(string[] args)
         {
-
+            Program program = new Program();
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Koneksi Ke")
+                }
+            }
         }
     }
 }
