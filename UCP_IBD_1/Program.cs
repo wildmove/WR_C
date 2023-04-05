@@ -51,7 +51,15 @@ namespace UCP_IBD_1
             {
                 try
                 {
-                    Console.WriteLine("Koneksi Ke")
+                    Console.WriteLine("Koneksi Ke Database");
+                    Console.WriteLine("Masukkan User ID : ");
+                    string user = Console.ReadLine();
+                    Console.WriteLine("Masukkan Password : ");
+                    string pass = Console.ReadLine();
+                    Console.WriteLine("Masukkan Database Tujuan : ");
+                    string db = Console.ReadLine();
+                    Console.Write("\nKetik K untuk terhubung ke Database");
+                    char chr = Convert
                 }
             }
         }
