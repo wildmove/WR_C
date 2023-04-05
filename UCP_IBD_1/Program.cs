@@ -46,7 +46,7 @@ namespace UCP_IBD_1
         
         static void Main(string[] args)
         {
-            Program program = new Program();
+            Program pr = new Program();
             while (true)
             {
                 try
@@ -59,7 +59,83 @@ namespace UCP_IBD_1
                     Console.WriteLine("Masukkan Database Tujuan : ");
                     string db = Console.ReadLine();
                     Console.Write("\nKetik K untuk terhubung ke Database");
-                    char chr = Convert
+                    char chr = Convert.ToChar(Console.ReadLine());
+                    switch (chr)
+                    {
+                        case 'K':
+                            {
+                                //Buat Koneksi
+                                SqlConnection conn = null;
+                                string strkoneksi = "data source=Willy\\amiin;" +
+                                "initial catalog = {0};" +
+                                "user ID = {1}; password = {2}";
+                                conn = new SqlConnection(string.Format(strkoneksi, db, user, pass));
+
+                                conn.Open();
+                                Console.Clear();
+                                while (true)
+                                {
+                                    try
+                                    {
+                                        Console.WriteLine("\nMenu");
+                                        Console.WriteLine("1. Melihat seluruh Data");
+                                        Console.WriteLine("2. Tambah Data");
+                                        Console.WriteLine("3. Keluar");
+                                        Console.Write("\nEnter your choice (1-3): ");
+                                        char ch = Convert.ToChar(Console.ReadLine());
+                                        switch (ch)
+                                        {
+                                            case '1':
+                                                {
+                                                    Console.Clear();
+                                                    Console.WriteLine("DATA MAHASISWA\n");
+                                                    Console.WriteLine();
+                                                    pr.baca(conn);
+                                                }
+                                                break;
+                                            case '2':
+                                                {
+                                                    Console.Clear();
+                                                    Console.WriteLine("INPUT DATA MAHASISWA\n");
+                                                    Console.WriteLine("Masukkan ID Calon Mahasiswa :");
+                                                    string id_Calon = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Nama Mhasiswa :");
+                                                    string NmaMhs = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Alamat Mahasiswa :");
+                                                    string Almt = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Jenis Kelamin  (L/P) : ");
+                                                    string jk = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan No Telepon : ");
+                                                    string notlpn = Console.ReadLine();
+                                                    try
+                                                    {
+                                                        pr.insert(NIM, NmaMhs, Almt, jk, notlpn, conn);
+                                                    }
+                                                    catch
+                                                    {
+                                                        Console.WriteLine("\nAnda tidak memiliki akses untuk menambah data");
+                                                    }
+                                                }
+                                                break;
+                                            case '3':
+                                                conn.Close();
+                                                return;
+                                            default:
+                                                {
+                                                    Console.Clear();
+                                                    Console.WriteLine("\nInvalid Option");
+                                                }
+                                                break;
+
+                                        }
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("\nCheck for the value entered.");
+                                    }
+                                }
+                            }
+                    }
                 }
             }
         }
