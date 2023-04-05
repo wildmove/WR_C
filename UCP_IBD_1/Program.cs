@@ -26,9 +26,24 @@ namespace UCP_IBD_1
             cmd.Parameters.Add(new SqlParameter("email", email));
 
             cmd.ExecuteNonQuery();
-            Console.WriteLine("Data Berhasil Ditambahkan")
-
+            Console.WriteLine("Data Berhasil Ditambahkan");
         }
+
+        public void baca (SqlConnection con)
+        {
+            SqlCommand cmd = new SqlCommand("Select + from HRD.calon_mhs", con);
+            SqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                for (int i = 0; i < r.FieldCount; i++)
+                {
+                    Console.WriteLine(r.GetValue(i));
+                }
+                Console.WriteLine();
+            }
+            r.Close();
+        }
+        
         static void Main(string[] args)
         {
 
