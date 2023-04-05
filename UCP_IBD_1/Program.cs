@@ -98,18 +98,20 @@ namespace UCP_IBD_1
                                                     Console.Clear();
                                                     Console.WriteLine("INPUT DATA MAHASISWA\n");
                                                     Console.WriteLine("Masukkan ID Calon Mahasiswa :");
-                                                    string id_Calon = Console.ReadLine();
+                                                    string id_calon_mhs = Console.ReadLine();
                                                     Console.WriteLine("Masukkan Nama Mhasiswa :");
-                                                    string NmaMhs = Console.ReadLine();
+                                                    string nama = Console.ReadLine();
                                                     Console.WriteLine("Masukkan Alamat Mahasiswa :");
-                                                    string Almt = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan Jenis Kelamin  (L/P) : ");
-                                                    string jk = Console.ReadLine();
-                                                    Console.WriteLine("Masukkan No Telepon : ");
-                                                    string notlpn = Console.ReadLine();
+                                                    string alamat = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Nomor Telpon : ");
+                                                    string no_telp = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan TTL : ");
+                                                    string ttl = Console.ReadLine();
+                                                    Console.WriteLine("Masukkan Email : ");
+                                                    string email = Console.ReadLine();
                                                     try
                                                     {
-                                                        pr.insert(NIM, NmaMhs, Almt, jk, notlpn, conn);
+                                                        pr.insert(id_calon_mhs, nama, alamat, no_telp, ttl, email, conn);
                                                     }
                                                     catch
                                                     {
@@ -134,6 +136,10 @@ namespace UCP_IBD_1
                                         Console.WriteLine("\nCheck for the value entered.");
                                     }
                                 }
+                            }
+                            default:
+                            {
+                                Console.WriteLine("Invalid Opri")
                             }
                     }
                 }
